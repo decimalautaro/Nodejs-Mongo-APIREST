@@ -8,6 +8,9 @@ app.use(cors())
 
 const PORT= process.env.PORT || 3000
 
+// RUTAS
+app.use('/api', require('./routes'))
+
 app.listen(PORT, ()=> {
     console.log(`Servidor escuchando en puerto ${PORT}`);
 })
