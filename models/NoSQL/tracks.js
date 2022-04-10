@@ -4,10 +4,10 @@ const TracksScheme = new mongoose.Schema(
     {
         //declaracion estructura del objeto
         name:{
-            type: String
+            type: String,
         },
         album:{
-            type: String
+            type: String,
         },
         cover:{
             type: String,
@@ -20,21 +20,21 @@ const TracksScheme = new mongoose.Schema(
         },
         artist:{
             name:{
-                type: String
+                type: String,
             },
             nickname:{
-                type: String
+                type: String,
             },
             nationality:{
-                type: String
+                type: String,
             }
         },
         duration:{
             start: {
-                type: Number
+                type: Number,
             },
             end: {
-                type: Number
+                type: Number,
             }
         },
         mediaId: {
@@ -43,7 +43,9 @@ const TracksScheme = new mongoose.Schema(
     },
     {
         timestamps: true,  //createAt, updateAt
-        versionKey: false
+        versionKey: false,
+        
+        
     }
 )
 
