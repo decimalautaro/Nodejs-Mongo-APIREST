@@ -38,7 +38,7 @@ const createItem = async(req, res) =>{
 
 /**  Actualizar un registro de la base de datos
 * @param {*} req
-*@param {*} res
+* @param {*} res
 */
 const updateItem = (req, res) =>{
 
