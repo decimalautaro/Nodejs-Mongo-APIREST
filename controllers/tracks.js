@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const { handle } = require('express/lib/application');
 const {tracksModel} = require('../models');
 
 /** Obtener lista de la base de datos
@@ -6,8 +6,14 @@ const {tracksModel} = require('../models');
 * @param {*} res
 */
 const getItems = async(req, res) =>{
-    const data= await tracksModel.find({})
-    res.send({data})
+    try {
+        const data= await tracksModel.find({})
+        res.send({data})
+    } catch (e) {
+        handleHttpError(res,'ERROR_GET_ITEMS')
+    }
+
+
 }
 
 /**  Obtener un detalle de la base de datos
@@ -23,11 +29,18 @@ const getItem = (req, res) =>{
 * @param {*} res
 */
 const createItem = async(req, res) =>{
-    const { body } = req
-    console.log(body);
-    // const parseBody = {...body, mediaId:mongoose.Types.ObjectId(body.mediaId)}
-    const data= await tracksModel.create(body)
-    res.send({ data })
+    try {
+        const { body } = req
+        console.log(body);
+        // const parseBody = {...body, mediaId:mongoose.Types.ObjectId(body.mediaId)}
+        const data= await tracksModel.create(body)
+        res.send({ data })
+    } catch (e) {
+        handleHttpError(res,'ERROR_POST_ITEMS')
+    }
+
+
+
 }
 
 /**  Actualizar un registro de la base de datos
