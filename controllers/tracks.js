@@ -1,4 +1,5 @@
-const { handle } = require('express/lib/application');
+const { matchedData } = require('express-validator');
+const {handleHttpError} = require('../utils/handleError')
 const {tracksModel} = require('../models');
 
 /** Obtener lista de la base de datos
@@ -30,13 +31,13 @@ const getItem = (req, res) =>{
 */
 const createItem = async(req, res) =>{
     try {
-        const { body } = req
-        console.log(body);
-        // const parseBody = {...body, mediaId:mongoose.Types.ObjectId(body.mediaId)}
+        const body =matchedData(req)
+ 
         const data= await tracksModel.create(body)
         res.send({ data })
+
     } catch (e) {
-        handleHttpError(res,'ERROR_POST_ITEMS')
+        handleHttpError(res,'ERROR_CREATE_ITEMS')
     }
 
 
